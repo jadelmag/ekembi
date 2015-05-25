@@ -1,0 +1,10 @@
+<form action="/breed/update/<%= breed.id %>" method="POST" class="form-signin">
+        <h2> Editar Raza </h2>
+
+        <input value="<%= breed.name %>" name="name" type="text" class="form-control"/>
+        <input value="<%= breed.color %>" name="color" type="text" class="form-control"/>
+        <input value="<%= breed.country %>" name="country" type="text" class="form-control"/>
+        
+        <input type="submit" value="Proceed" class="btn btn-lg btn-primary btn-block"/>
+        <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+</form>

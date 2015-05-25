@@ -1,0 +1,43 @@
+<div class='container'>
+    <a class="btn btn-medium btn-primary" href="/user/">Usuarios</a>
+    <br />
+    <div class="hero-unit center">
+
+        <form class="form-signin" >
+            <h1>Info:</h1>
+            <p><strong>Nombre:</strong> <%= user.name %> </p>
+            <p><strong>Apellidos:</strong> <%= user.lastname %> </p>
+            <p><strong>Email:</strong> <%= user.email %> </p>
+        </form>
+
+    </div>
+    <hr>
+
+    <h3>Mascotas</h3> <a href="/user/associatePet/<%= user.id %>">Asociar Nueva Mascota</a>
+    <table class='table'>
+        <tr>
+            <th>Chip</th>
+            <th>Nombre</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <% _.each(pets, function(pet) { %>
+        <tr data-id="<%= pet.id %>" data-model="pet">
+            <td><strong>Chip:</strong> <%= pet.id_chip %> </td>
+            <td><strong>Nombre:</strong> <%= pet.name %> </td> 
+            <td><a href="/pet/show/<%= pet.id %>" class="btn btn-sm btn-primary">Show</a></td>
+            <td>
+                <form action="/user/deassociatePet/" method="POST" >                    
+                    <input type="hidden" name="pet_id" value="<%= pet.id %>" />
+                    <input type="hidden" name="user_id" value="<%= user.id %>" />
+                     <input type="submit" value="Desasociar mascota" class="btn btn-sm "/>
+                    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                </form>
+            </td>
+        </tr>
+
+        <% }) %>
+    </table>
+    <hr>
+    <a class="btn btn-medium btn-primary" href="/user/edit/<%= user.id %>">Edit</a>   
+</div>

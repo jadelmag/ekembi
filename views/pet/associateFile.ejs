@@ -1,0 +1,34 @@
+<div class='container'>
+	<h3>Elige el fichero de la mascota</h3>    
+    <table class='table'>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Formato</th>
+            <th>Tamaño</th>
+            <th>Path completo</th>
+            <th>Versión</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <% _.each(files, function(file) { %>
+        <tr data-id="<%= file.id %>" data-model="file">
+            <td><%= file.name %></td>
+            <td><%= file.description %></td>
+            <td><%= file.file %></td>
+            <td><%= file.fileSize %></td>
+            <td><%= file.fullPath %></td>
+            <td><%= file.version %></td>
+            <td>
+                <form action="/pet/associateFileToPet/" method="POST" >                    
+                    <input type="hidden" name="file_id" value="<%= file.id %>" />
+                    <input type="hidden" name="pet_id" value="<%= pet_id %>" />
+                     <input type="submit" value="Asociar" class="btn btn-sm"/>
+                    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                </form>
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+    <br />
+</div>

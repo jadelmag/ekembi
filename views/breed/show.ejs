@@ -1,0 +1,15 @@
+<div class='container'>
+	<a class="btn btn-medium btn-primary" href="/breed/">Razas</a>
+	<br />
+
+	<div class="hero-unit center">
+        <form class="form-signin" >
+            <h1>Info:</h1>
+            <p><strong>País:</strong> <%= breed.country %> </p>
+            <p><strong>Nombre:</strong> <%= breed.name %> </p> 
+            <p><strong>Color:</strong> <%= breed.color %> </p> 
+        </form>
+    </div>
+    <hr>
+	<a class="btn btn-medium btn-primary" href="/breed/edit/<%= breed.id %>">Edit</a>	
+</div>

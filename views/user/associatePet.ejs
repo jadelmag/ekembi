@@ -1,0 +1,25 @@
+<div class='container'>
+	<h3>Elige la mascota a asociar con el usuario</h3>    
+    <table class='table'>
+        <tr>
+            <th>Chip</th>
+            <th>Nombre</th>
+            <th></th>
+        </tr>
+        <% _.each(pets, function(pet) { %>
+        <tr data-id="<%= pet.id %>" data-model="pet">
+            <td><%= pet.id_chip %></td>
+            <td><%= pet.name %></td>
+            <td>
+                <form action="/user/associatePetToUser/" method="POST" >                    
+                    <input type="hidden" name="pet_id" value="<%= pet.id %>" />
+                    <input type="hidden" name="user_id" value="<%= user_id %>" />
+                     <input type="submit" value="Asociar" class="btn btn-sm"/>
+                    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                </form>
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+    <br />
+</div>

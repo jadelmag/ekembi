@@ -1,0 +1,10 @@
+<form action="/user/update/<%= user.id %>" method="POST" class="form-signin">
+        <h2> Editar Usuario </h2>
+
+        <input value="<%= user.name %>" name="name" type="text" class="form-control"/>
+        <input value="<%= user.lastname %>" name="lastname" type="text" class="form-control"/>
+        <input value="<%= user.email %>" name="email" type="email" class="form-control"/>
+        
+        <input type="submit" value="Proceed" class="btn btn-lg btn-primary btn-block"/>
+        <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+</form>

@@ -1,0 +1,37 @@
+<div class="container">
+
+    <h3>Imágenes</h3>
+    <table class='table'>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Formato</th>
+            <th>Tamaño</th>
+            <th>Path completo</th>
+            <th>Versión</th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        <% _.each(files, function(file) { %>
+        <tr data-id="<%= file.id %>" data-model="file">
+            <td><%= file.name %></td>
+            <td><%= file.description %></td>
+            <td><%= file.file %></td>
+            <td><%= file.fileSize %></td>
+            <td><%= file.fullPath %></td>
+            <td><%= file.version %></td>
+            <td><a href="/file/show/<%= file.id %>" class="btn btn-sm btn-primary">Show</a></td>
+            <td><form action="/file/destroy/<%= file.id %>" method="POST">
+                    <input type="hidden" name="_method" value="delete"/>
+                    <input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+                    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                </form>
+            </td>
+        </tr>
+
+        <% }) %>
+    </table>
+    <br />
+    <a class="btn btn-medium btn-primary" href="/file/upload-file/">Subir Nueva Imagen</a>
+</div>

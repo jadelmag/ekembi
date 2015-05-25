@@ -1,0 +1,28 @@
+<div class='container'>
+	<h3>Elige la raza de la mascota</h3>    
+    <table class='table'>
+        <tr>
+            <th>País</th>
+            <th>Nombre</th>
+            <th>Color</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <% _.each(breeds, function(breed) { %>
+        <tr data-id="<%= breed.id %>" data-model="breed">
+            <td><%= breed.country %></td>
+            <td><%= breed.name %></td>
+            <td><%= breed.color %></td>
+            <td>
+                <form action="/pet/associateBreedToPet/" method="POST" >                    
+                    <input type="hidden" name="breed_id" value="<%= breed.id %>" />
+                    <input type="hidden" name="pet_id" value="<%= pet_id %>" />
+                     <input type="submit" value="Asociar" class="btn btn-sm"/>
+                    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                </form>
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+    <br />
+</div>

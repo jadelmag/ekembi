@@ -1,0 +1,31 @@
+<div class="container">
+    <h3>Razas</h3>
+    <table class='table'>
+        <tr>
+            <th>País</th>
+            <th>Nombre</th>
+            <th>Color</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        <% _.each(breeds, function(breed) { %>
+        <tr data-id="<%= breed.id %>" data-model="breed">
+            <td><%= breed.country %></td>
+            <td><%= breed.name %></td>
+            <td><%= breed.color %></td>
+            <td><a href="/breed/show/<%= breed.id %>" class="btn btn-sm btn-primary">Show</a></td>
+            <td><a href="/breed/edit/<%= breed.id %>" class="btn btn-sm btn-warning">Edit</a></td>
+	        <td><form action="/breed/destroy/<%= breed.id %>" method="POST"> <!-- Using form instead of GET -->
+                    <input type="hidden" name="_method" value="delete"/>
+                    <input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+                    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                </form>
+            </td>
+        </tr>
+
+        <% }) %>
+    </table>
+    <a href="/breed/new">Crear Nueva Raza</a>
+</div>

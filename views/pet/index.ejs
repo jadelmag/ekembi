@@ -1,0 +1,28 @@
+<div class="container">
+    <h3>Mascotas</h3>
+    <table class='table'>
+        <tr>
+            <th>Chip</th>
+            <th>Nombre</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <% _.each(pets, function(pet) { %>
+        <tr data-id="<%= pet.id %>" data-model="pet">
+            <td><%= pet.id_chip %></td>
+            <td><%= pet.name %></td>
+            <td><a href="/pet/show/<%= pet.id %>" class="btn btn-sm btn-primary">Show</a></td>
+            <td><a href="/pet/edit/<%= pet.id %>" class="btn btn-sm btn-warning">Edit</a></td>
+	        <td><form action="/pet/destroy/<%= pet.id %>" method="POST"> <!-- Using form instead of GET -->
+                    <input type="hidden" name="_method" value="delete"/>
+                    <input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+                    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                </form>
+            </td>
+        </tr>
+
+        <% }) %>
+    </table>
+    <a href="/pet/new">Crear Nueva Mascota</a>
+</div>

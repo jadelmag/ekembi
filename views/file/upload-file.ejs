@@ -1,0 +1,7 @@
+<form enctype="multipart/form-data" action="/file/upload" method="POST" id="sign-up-form" class="form-signin">
+  <h2 class="form-signin-heading"> Upload a file </h2>
+	<input type="hidden" name="_csrf" value="<%=_csrf %>"/>
+	<input type="file" name="upFile" />
+  <br/>
+  <input type="submit" class="btn btn-lg btn-primary btn-block" value="upload"/>
+</form>  

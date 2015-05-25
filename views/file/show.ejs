@@ -1,0 +1,18 @@
+<div class='container'>
+	<a class="btn btn-medium btn-primary" href="/file/">Imágenes</a>
+	<br />
+    <div class="hero-unit center">
+
+        <form class="form-signin" >
+        	<h1>Info:</h1>
+        	<p><strong>Nombre:</strong> <%= file.name %> </p>
+        	<p><strong>Descripción:</strong> <%= file.description %> </p>
+        	<p><strong>Formato:</strong> <%= file.file %> </p>
+        	<p><strong>Tamaño:</strong> <%= file.fileSize %> </p>
+        	<p><strong>Path completo:</strong> <%= file.fullPath %> </p>
+            <p><strong>Versión:</strong> <%= file.version %> </p>
+        </form>
+
+    </div>
+	<hr>
+</div>

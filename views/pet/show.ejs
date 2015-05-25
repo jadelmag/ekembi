@@ -1,0 +1,78 @@
+<div class='container'>
+	<a class="btn btn-medium btn-primary" href="/pet/">Mascotas</a>
+	<br />
+
+	<div class="hero-unit center">
+        <form class="form-signin" >
+            <h1>Info:</h1>
+            <p><strong>Chip:</strong> <%= pet.id_chip %> </p>
+            <p><strong>Nombre:</strong> <%= pet.name %> </p> 
+        </form>
+    </div>
+    <hr>
+    <h3>Razas</h3> <a href="/pet/associateBreed/<%= pet.id %>">Asociar Nueva Raza</a>
+    <table class='table'>
+        <tr>
+            <th>País</th>
+            <th>Nombre</th>
+            <th>Color</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <% _.each(breeds, function(breed) { %>
+        <tr data-id="<%= breed.id %>" data-model="breed">
+            <td><%= breed.country %> </td>
+            <td><%= breed.name %> </td> 
+            <td><%= breed.color %> </td> 
+            <td></td>
+            <td></td>
+            <td><a href="/pet/show/<%= pet.id %>" class="btn btn-sm btn-primary">Show</a></td>
+            <td>
+                <form action="/pet/deassociateBreed/" method="POST" >                    
+                    <input type="hidden" name="breed_id" value="<%= breed.id %>" />
+                    <input type="hidden" name="pet_id" value="<%= pet.id %>" />
+                    <input type="submit" value="Desasociar Raza" class="btn btn-sm "/>
+                    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                </form>
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+    <hr>
+    <h3>Ficheros</h3> <a href="/pet/associateFile/<%= pet.id %>">Asociar Nuevo Fichero</a>
+    <table class='table'>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Formato</th>
+            <th>Tamaño</th>
+            <th>Path completo</th>
+            <th>Versión</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <% _.each(files, function(file) { %>
+        <tr data-id="<%= file.id %>" data-model="file">
+            <td><%= file.name %></td>
+            <td><%= file.description %></td>
+            <td><%= file.file %></td>
+            <td><%= file.fileSize %></td>
+            <td><%= file.fullPath %></td>
+            <td><%= file.version %></td>
+            <td><a href="/pet/show/<%= pet.id %>" class="btn btn-sm btn-primary">Show</a></td>
+            <td>
+                <form action="/pet/deassociateFile/" method="POST" >                    
+                    <input type="hidden" name="file_id" value="<%= file.id %>" />
+                    <input type="hidden" name="pet_id" value="<%= pet.id %>" />
+                     <input type="submit" value="Desasociar Imagen" class="btn btn-sm "/>
+                    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                </form>
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+    <hr>
+	<a class="btn btn-medium btn-primary" href="/pet/edit/<%= pet.id %>">Edit</a>	
+</div>
